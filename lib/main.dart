@@ -1,4 +1,3 @@
-import 'package:card_flip_listview/path_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,8 +14,59 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           scrollbarTheme: const ScrollbarThemeData(isAlwaysShown: false)),
-      home: const PathScreen(),
+      home: const DynamicAnimationControllersScreen(),
       debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+const totalPaths = 2;
+
+class DynamicAnimationControllersScreen extends StatefulWidget {
+  const DynamicAnimationControllersScreen({Key? key}) : super(key: key);
+
+  @override
+  State<DynamicAnimationControllersScreen> createState() =>
+      _DynamicAnimationControllersScreenState();
+}
+
+class _DynamicAnimationControllersScreenState
+    extends State<DynamicAnimationControllersScreen>
+    with TickerProviderStateMixin {
+  final List<AnimationController> controllers = [];
+
+  @override
+  void initState() {
+    super.initState();
+    // populate controllers
+    for (int i = 0; i < totalPaths; i++) {
+      controllers.add(AnimationController(
+        vsync: this,
+        duration: const Duration(seconds: 2),
+      )..addListener(() {
+          setState(() {});
+          if (controllers[i].isCompleted) {
+            print("$i completed");
+          }
+        }));
+    }
+  }
+
+  @override
+  void dispose() {
+    for (final element in controllers) {
+      element.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => controllers[0].forward(),
+        child: const Icon(Icons.play_arrow),
+      ),
     );
   }
 }
