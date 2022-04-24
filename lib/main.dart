@@ -1,6 +1,5 @@
+import 'package:card_flip_listview/cuberto_clone/screens/mouse_following_ui_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'stars_custom_paint/screen/stars_homescreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           scrollbarTheme: const ScrollbarThemeData(isAlwaysShown: false)),
-      home: StarsHomescreen(),
+      home: const MouseFollowingUiScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
