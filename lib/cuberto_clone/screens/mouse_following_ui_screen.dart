@@ -48,7 +48,7 @@ class MouseFollowingUiScreen extends HookWidget {
           child: Stack(
             children: [
               AnimatedPositioned(
-                duration: const Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 200),
                 top: pointerOffset.value.dy,
                 left: pointerOffset.value.dx,
                 child: BlocBuilder<PointerCubit, PointerState>(
