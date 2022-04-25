@@ -10,6 +10,24 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class MouseFollowingUiScreen extends HookWidget {
   const MouseFollowingUiScreen({Key? key}) : super(key: key);
 
+  Offset _updatePointerPosition(
+    PointerState state,
+    double dx,
+    double dy,
+  ) {
+    return state.map(
+      idle: (_) {
+        return Offset(dx - 4, dy - 6);
+      },
+      hoverLink: (_) {
+        return Offset(dx, dy);
+      },
+      hoverHeader: (_) {
+        return Offset(dx - 70, dy - 70);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final pointerOffset = useState(const Offset(0, 0));
@@ -17,7 +35,11 @@ class MouseFollowingUiScreen extends HookWidget {
     return Scaffold(
       body: MouseRegion(
         onHover: (data) {
-          pointerOffset.value = Offset(data.position.dx, data.position.dy);
+          pointerOffset.value = _updatePointerPosition(
+            context.read<PointerCubit>().state,
+            data.position.dx,
+            data.position.dy,
+          );
         },
         child: Container(
           height: MediaQuery.of(context).size.height,
