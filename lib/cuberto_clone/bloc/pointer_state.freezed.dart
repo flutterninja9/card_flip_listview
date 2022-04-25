@@ -26,10 +26,8 @@ class _$PointerStateTearOff {
     return const _HoverLink();
   }
 
-  _HoverHeader hoverHeader(
-      {required Color foregroundColor, required Widget child}) {
+  _HoverHeader hoverHeader({required Widget child}) {
     return _HoverHeader(
-      foregroundColor: foregroundColor,
       child: child,
     );
   }
@@ -44,21 +42,21 @@ mixin _$PointerState {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() hoverLink,
-    required TResult Function(Color foregroundColor, Widget child) hoverHeader,
+    required TResult Function(Widget child) hoverHeader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? hoverLink,
-    TResult Function(Color foregroundColor, Widget child)? hoverHeader,
+    TResult Function(Widget child)? hoverHeader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? hoverLink,
-    TResult Function(Color foregroundColor, Widget child)? hoverHeader,
+    TResult Function(Widget child)? hoverHeader,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,7 +140,7 @@ class _$_Idle implements _Idle {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() hoverLink,
-    required TResult Function(Color foregroundColor, Widget child) hoverHeader,
+    required TResult Function(Widget child) hoverHeader,
   }) {
     return idle();
   }
@@ -152,7 +150,7 @@ class _$_Idle implements _Idle {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? hoverLink,
-    TResult Function(Color foregroundColor, Widget child)? hoverHeader,
+    TResult Function(Widget child)? hoverHeader,
   }) {
     return idle?.call();
   }
@@ -162,7 +160,7 @@ class _$_Idle implements _Idle {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? hoverLink,
-    TResult Function(Color foregroundColor, Widget child)? hoverHeader,
+    TResult Function(Widget child)? hoverHeader,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -251,7 +249,7 @@ class _$_HoverLink implements _HoverLink {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() hoverLink,
-    required TResult Function(Color foregroundColor, Widget child) hoverHeader,
+    required TResult Function(Widget child) hoverHeader,
   }) {
     return hoverLink();
   }
@@ -261,7 +259,7 @@ class _$_HoverLink implements _HoverLink {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? hoverLink,
-    TResult Function(Color foregroundColor, Widget child)? hoverHeader,
+    TResult Function(Widget child)? hoverHeader,
   }) {
     return hoverLink?.call();
   }
@@ -271,7 +269,7 @@ class _$_HoverLink implements _HoverLink {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? hoverLink,
-    TResult Function(Color foregroundColor, Widget child)? hoverHeader,
+    TResult Function(Widget child)? hoverHeader,
     required TResult orElse(),
   }) {
     if (hoverLink != null) {
@@ -324,7 +322,7 @@ abstract class _$HoverHeaderCopyWith<$Res> {
   factory _$HoverHeaderCopyWith(
           _HoverHeader value, $Res Function(_HoverHeader) then) =
       __$HoverHeaderCopyWithImpl<$Res>;
-  $Res call({Color foregroundColor, Widget child});
+  $Res call({Widget child});
 }
 
 /// @nodoc
@@ -339,14 +337,9 @@ class __$HoverHeaderCopyWithImpl<$Res> extends _$PointerStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? foregroundColor = freezed,
     Object? child = freezed,
   }) {
     return _then(_HoverHeader(
-      foregroundColor: foregroundColor == freezed
-          ? _value.foregroundColor
-          : foregroundColor // ignore: cast_nullable_to_non_nullable
-              as Color,
       child: child == freezed
           ? _value.child
           : child // ignore: cast_nullable_to_non_nullable
@@ -358,16 +351,14 @@ class __$HoverHeaderCopyWithImpl<$Res> extends _$PointerStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_HoverHeader implements _HoverHeader {
-  const _$_HoverHeader({required this.foregroundColor, required this.child});
+  const _$_HoverHeader({required this.child});
 
-  @override
-  final Color foregroundColor;
   @override
   final Widget child;
 
   @override
   String toString() {
-    return 'PointerState.hoverHeader(foregroundColor: $foregroundColor, child: $child)';
+    return 'PointerState.hoverHeader(child: $child)';
   }
 
   @override
@@ -375,16 +366,12 @@ class _$_HoverHeader implements _HoverHeader {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _HoverHeader &&
-            const DeepCollectionEquality()
-                .equals(other.foregroundColor, foregroundColor) &&
             const DeepCollectionEquality().equals(other.child, child));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(foregroundColor),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(child));
 
   @JsonKey(ignore: true)
   @override
@@ -396,9 +383,9 @@ class _$_HoverHeader implements _HoverHeader {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() hoverLink,
-    required TResult Function(Color foregroundColor, Widget child) hoverHeader,
+    required TResult Function(Widget child) hoverHeader,
   }) {
-    return hoverHeader(foregroundColor, child);
+    return hoverHeader(child);
   }
 
   @override
@@ -406,9 +393,9 @@ class _$_HoverHeader implements _HoverHeader {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? hoverLink,
-    TResult Function(Color foregroundColor, Widget child)? hoverHeader,
+    TResult Function(Widget child)? hoverHeader,
   }) {
-    return hoverHeader?.call(foregroundColor, child);
+    return hoverHeader?.call(child);
   }
 
   @override
@@ -416,11 +403,11 @@ class _$_HoverHeader implements _HoverHeader {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? hoverLink,
-    TResult Function(Color foregroundColor, Widget child)? hoverHeader,
+    TResult Function(Widget child)? hoverHeader,
     required TResult orElse(),
   }) {
     if (hoverHeader != null) {
-      return hoverHeader(foregroundColor, child);
+      return hoverHeader(child);
     }
     return orElse();
   }
@@ -461,10 +448,8 @@ class _$_HoverHeader implements _HoverHeader {
 }
 
 abstract class _HoverHeader implements PointerState {
-  const factory _HoverHeader(
-      {required Color foregroundColor, required Widget child}) = _$_HoverHeader;
+  const factory _HoverHeader({required Widget child}) = _$_HoverHeader;
 
-  Color get foregroundColor;
   Widget get child;
   @JsonKey(ignore: true)
   _$HoverHeaderCopyWith<_HoverHeader> get copyWith =>

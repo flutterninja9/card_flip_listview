@@ -1,4 +1,4 @@
-import 'package:card_flip_listview/cuberto_clone/screens/mouse_following_ui_screen.dart';
+import 'package:card_flip_listview/cuberto_clone/bloc/pointer_state.dart';
 import 'package:flutter/material.dart';
 
 /// states of pointer
@@ -21,37 +21,35 @@ class PointerStateWidget extends StatefulWidget {
 class _PointerStateWidgetState extends State<PointerStateWidget> {
   @override
   Widget build(BuildContext context) {
-    switch (widget.state) {
-      case PointerState.idle:
-        return Container(
-          height: 10,
-          width: 10,
-          decoration: const BoxDecoration(
-            color: Colors.black,
-            shape: BoxShape.circle,
-          ),
-        );
-      case PointerState.hoverHeader:
-        return Container(
-          height: 150,
-          width: 150,
-          decoration: const BoxDecoration(
-            color: Colors.black,
-            shape: BoxShape.circle,
-          ),
-        );
-      case PointerState.hoverLink:
-        return Container(
-          height: 80,
-          width: 80,
-          decoration: BoxDecoration(
-            color: Colors.pinkAccent.withOpacity(0.6),
-            shape: BoxShape.circle,
-          ),
-          child: const Center(
-            child: Text("Hovering on a header"),
-          ),
-        );
-    }
+    return widget.state.map(
+      idle: (_) => Container(
+        height: 10,
+        width: 10,
+        decoration: const BoxDecoration(
+          color: Colors.black,
+          shape: BoxShape.circle,
+        ),
+      ),
+      hoverLink: (_) => Container(
+        height: 80,
+        width: 80,
+        decoration: BoxDecoration(
+          color: Colors.pinkAccent.withOpacity(0.6),
+          shape: BoxShape.circle,
+        ),
+        child: const Center(
+          child: Text("Hovering on a link"),
+        ),
+      ),
+      hoverHeader: (data) => Container(
+        height: 150,
+        width: 150,
+        decoration: const BoxDecoration(
+          color: Colors.black,
+          shape: BoxShape.circle,
+        ),
+        child: data.child,
+      ),
+    );
   }
 }

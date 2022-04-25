@@ -10,7 +10,6 @@ class PointerState with _$PointerState {
   const factory PointerState.hoverLink() = _HoverLink;
 
   const factory PointerState.hoverHeader({
-    required Color foregroundColor,
     required Widget child,
   }) = _HoverHeader;
 }
