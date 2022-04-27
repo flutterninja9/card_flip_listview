@@ -19,10 +19,14 @@ class PointerStateWidget extends StatefulWidget {
 }
 
 class _PointerStateWidgetState extends State<PointerStateWidget> {
+  final tKey = const ValueKey("shared-key");
+  static const _animationDuration = Duration(milliseconds: 200);
   @override
   Widget build(BuildContext context) {
     return widget.state.map(
-      idle: (_) => Container(
+      idle: (_) => AnimatedContainer(
+        key: tKey,
+        duration: _animationDuration,
         height: 10,
         width: 10,
         decoration: const BoxDecoration(
@@ -30,7 +34,9 @@ class _PointerStateWidgetState extends State<PointerStateWidget> {
           shape: BoxShape.circle,
         ),
       ),
-      hoverLink: (_) => Container(
+      hoverLink: (_) => AnimatedContainer(
+        key: tKey,
+        duration: _animationDuration,
         height: 80,
         width: 80,
         decoration: BoxDecoration(
@@ -41,7 +47,9 @@ class _PointerStateWidgetState extends State<PointerStateWidget> {
           child: Text("Hovering on a link"),
         ),
       ),
-      hoverHeader: (data) => Container(
+      hoverHeader: (data) => AnimatedContainer(
+        key: tKey,
+        duration: _animationDuration,
         height: 150,
         width: 150,
         decoration: const BoxDecoration(
