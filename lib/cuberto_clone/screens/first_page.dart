@@ -1,5 +1,4 @@
-import 'package:card_flip_listview/cuberto_clone/widgets/blend_mask.dart';
-import 'package:card_flip_listview/cuberto_clone/widgets/bordered_text.dart';
+import 'package:card_flip_listview/cuberto_clone/widgets/hover_header_option.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -20,63 +19,26 @@ class FirstPage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          MouseRegion(
-              onHover: (_) {
-                onHover(const CustomHeaderPointerChild(
-                  imgUrl:
-                      'https://c.tenor.com/_ufjl-UGx8gAAAAC/kakashi-naruto.gif',
-                ));
-              },
-              onExit: onExit,
-              child: const BlendMask(
-                blendMode: BlendMode.difference,
-                child: BorderedText(text: "WEBSITES"),
-              )),
-          MouseRegion(
-              onHover: (_) {
-                onHover(const CustomHeaderPointerChild(
-                  imgUrl: 'https://c.tenor.com/aqP3GZjT924AAAAd/itachi.gif',
-                ));
-              },
-              onExit: onExit,
-              child: const BlendMask(
-                blendMode: BlendMode.difference,
-                child: BorderedText(text: "APPS"),
-              )),
-          MouseRegion(
-              onHover: (_) {
-                onHover(const CustomHeaderPointerChild(
-                  imgUrl:
-                      'https://c.tenor.com/paSN7hpqlIIAAAAd/madara-naruto-shippuden-madara.gif',
-                ));
-              },
-              onExit: onExit,
-              child: const BlendMask(
-                blendMode: BlendMode.difference,
-                child: BorderedText(text: "BRANDING"),
-              )),
+          HoverHeaderOption(
+            title: 'WEBSITES',
+            imageUrl: 'https://c.tenor.com/_ufjl-UGx8gAAAAC/kakashi-naruto.gif',
+            onHover: onHover,
+            onExit: onExit,
+          ),
+          HoverHeaderOption(
+            title: 'APPS',
+            imageUrl: 'https://c.tenor.com/aqP3GZjT924AAAAd/itachi.gif',
+            onHover: onHover,
+            onExit: onExit,
+          ),
+          HoverHeaderOption(
+            title: 'BRANDING',
+            imageUrl:
+                'https://c.tenor.com/paSN7hpqlIIAAAAd/madara-naruto-shippuden-madara.gif',
+            onHover: onHover,
+            onExit: onExit,
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class CustomHeaderPointerChild extends StatelessWidget {
-  const CustomHeaderPointerChild({
-    Key? key,
-    required this.imgUrl,
-  }) : super(key: key);
-
-  final String imgUrl;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      width: 150,
-      decoration: BoxDecoration(
-        color: Colors.black,
-        shape: BoxShape.circle,
-        image: DecorationImage(image: NetworkImage(imgUrl), fit: BoxFit.cover),
       ),
     );
   }
