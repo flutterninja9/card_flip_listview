@@ -14,33 +14,31 @@ class BorderedText extends StatelessWidget {
   static const _letterSpacing = 5.0;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Text(
-            text,
-            style: GoogleFonts.montserrat(
-              fontSize: _fontSize,
-              fontWeight: _fontWeight,
-              letterSpacing: _letterSpacing,
-              foreground: Paint()
-                ..style = PaintingStyle.stroke
-                ..strokeWidth = 3
-                ..color = Colors.white,
-            ),
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Text(
+          text,
+          style: GoogleFonts.montserrat(
+            fontSize: _fontSize,
+            fontWeight: _fontWeight,
+            letterSpacing: _letterSpacing,
+            foreground: Paint()
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = 3
+              ..color = Colors.white,
           ),
-          Text(
-            text,
-            style: GoogleFonts.montserrat(
-              fontSize: _fontSize,
-              fontWeight: _fontWeight,
-              letterSpacing: _letterSpacing,
-              color: Colors.black,
-            ),
+        ),
+        Text(
+          text,
+          style: GoogleFonts.montserrat(
+            fontSize: _fontSize,
+            fontWeight: _fontWeight,
+            letterSpacing: _letterSpacing,
+            color: Colors.black,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
