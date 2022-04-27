@@ -50,8 +50,8 @@ class _PointerStateWidgetState extends State<PointerStateWidget> {
       hoverHeader: (data) => AnimatedContainer(
         key: tKey,
         duration: _animationDuration,
-        height: 150,
-        width: 150,
+        height: 180,
+        width: 180,
         decoration: const BoxDecoration(
           color: Colors.black,
           shape: BoxShape.circle,
